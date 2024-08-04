@@ -23,3 +23,12 @@ jobs:
 
       - name: Run scraper
         run: python scrape.py
+
+      - name: List files
+        run: ls -la
+
+      - name: Upload scraped data
+        uses: actions/upload-artifact@v3
+        with:
+          name: job-data
+          path: job_data.json
