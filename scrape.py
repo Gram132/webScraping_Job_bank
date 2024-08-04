@@ -5,6 +5,7 @@ def scrape_data():
     # Your scraping logic here
     data = {"message": "Scraping completed successfully!"}
     with open('job_data.json', 'w') as f:
+        print('i am creating this file')
         json.dump(data, f)
 
 if __name__ == "__main__":
