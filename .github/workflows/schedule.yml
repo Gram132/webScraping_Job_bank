@@ -1,8 +1,7 @@
-name: Schedule Job Scraper
+name: Manual Trigger
 
 on:
-  schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  workflow_dispatch:  # Allows manual trigger from the GitHub UI
 
 jobs:
   scrape:
@@ -23,10 +22,4 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run scraper
-        run: python your_script.py
-
-      - name: Upload scraped data
-        uses: actions/upload-artifact@v2
-        with:
-          name: job-data
-          path: job_data.json
+        run: python scrape.py
