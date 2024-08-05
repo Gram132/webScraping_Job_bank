@@ -21,19 +21,17 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Uninstall Google Chrome
+    - name: Uninstall current Google Chrome
       run: sudo apt-get remove -y google-chrome-stable
 
-
-    - name: Install Google Chrome 114
+    - name: Install Google Chrome 127
       run: |
         wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
         sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
 
-
-    - name: Install ChromeDriver 114.0.5735.90
+    - name: Install ChromeDriver for Chrome 127
       run: |
-        wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
+        wget https://chromedriver.storage.googleapis.com/127.0.6533.88/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         sudo mv chromedriver /usr/local/bin/chromedriver
         sudo chmod +x /usr/local/bin/chromedriver
