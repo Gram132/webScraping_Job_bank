@@ -16,6 +16,7 @@ jobs:
       with:
         python-version: '3.9'
 
+
     - name: Install Google Chrome
       run: |
         sudo apt-get update
@@ -25,16 +26,21 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y google-chrome-stable
 
+    - name: Remove existing ChromeDriver
+      run: |
+        sudo rm /usr/local/bin/chromedriver
+  
     - name: Install ChromeDriver
       run: |
-        # Manually specify the ChromeDriver version
-        CHROMEDRIVER_VERSION="114.0.5735.90"  # Update this to match your Chrome version
+        # Specify the correct ChromeDriver version
+        CHROMEDRIVER_VERSION="127.0.6533.88"  # Replace with a valid version number
 
         # Download and install ChromeDriver
         wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         sudo mv chromedriver /usr/local/bin/chromedriver
         sudo chmod +x /usr/local/bin/chromedriver
+
 
     - name: Install Python dependencies
       run: |
