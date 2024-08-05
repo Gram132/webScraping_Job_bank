@@ -25,16 +25,11 @@ jobs:
 
     - name: Install ChromeDriver
       run: |
-        CHROMEDRIVER_VERSION="142.250.191.155"  # Replace with the correct version
-        if [ -f /usr/local/bin/chromedriver ]; then sudo rm /usr/local/bin/chromedriver; fi
+        CHROMEDRIVER_VERSION="114.0.5735.90"  # Replace with the correct version
         wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         sudo mv chromedriver /usr/local/bin/chromedriver
         sudo chmod +x /usr/local/bin/chromedriver
-
-    - name: Check Chrome Installation
-      run: |
-        google-chrome --version
 
     - name: Run scraper
       run: |
