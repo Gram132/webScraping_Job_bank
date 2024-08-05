@@ -2,9 +2,16 @@ import datetime
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 
-driver = webdriver.Chrome()
+# Set up Chrome driver options
+options = Options()
+options.headless = True
+options.add_argument('--no-sandbox')
+options.add_argument('--disable-dev-shm-usage')
+
+driver = webdriver.Chrome(options=options)
 
 # List of URLs to scrape
 urls = ['https://www.jobbank.gc.ca/jobsearch/jobpostingtfw/41480404;jsessionid=C19B7A626490D35D896834EFAD0F254B.jobsearch74?source=searchresults',
