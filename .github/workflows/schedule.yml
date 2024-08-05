@@ -1,51 +1,38 @@
-name: Scrape Job Data
+name: Web Scraping
 
 on:
   workflow_dispatch:
 
 jobs:
-  build:
+  scrape:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout repository
       uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.9'
+        python-version: '3.10'
 
     - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y wget unzip python3-pip
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
 
-    - name: Install Google Chrome
+    - name: Install Google Chrome 114
       run: |
-        wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-        echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google-chrome.list
-        sudo apt-get update
-        sudo apt-get install -y google-chrome-stable
+        sudo apt-get remove -y google-chrome-stable
+        wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo apt-get install -y ./google-chrome-stable_current_amd64.deb
 
-    - name: Install ChromeDriver
+    - name: Install ChromeDriver 114.0.5735.90
       run: |
-        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+')
-        CHROMEDRIVER_VERSION=$(curl -sS https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION)
-        wget https://chromedriver.storage.googleapis.com/${CHROMEDRIVER_VERSION}/chromedriver_linux64.zip
+        wget https://chromedriver.storage.googleapis.com/114.0.5735.90/chromedriver_linux64.zip
         unzip chromedriver_linux64.zip
         sudo mv chromedriver /usr/local/bin/chromedriver
         sudo chmod +x /usr/local/bin/chromedriver
 
-    - name: Check Chrome Installation
-      run: |
-        google-chrome --version
-        chromedriver --version
-
-    - name: Install Python dependencies
-      run: |
-        pip install -r requirements.txt
-
-    - name: Run scraper
-      run: |
-        python scrape.py
+    - name: Run script
+      run: python scrape.py
