@@ -14,7 +14,7 @@ options.add_argument('--disable-dev-shm-usage')
 # Specify the correct path to ChromeDriver
 service = Service('/usr/local/bin/chromedriver')
 
-driver = webdriver.Chrome(service=service, options=options)
+driver = webdriver.Chrome()
 
 
 # List of URLs to scrape
