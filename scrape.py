@@ -13,8 +13,7 @@ options.add_argument('--disable-dev-shm-usage')
 options.add_argument('--disable-gpu')
 options.add_argument('--remote-debugging-port=9222')
 
-driver = webdriver.Chrome(service=Service("/usr/local/bin/chromedriver"), options=options)
-
+driver = webdriver.Chrome()
 # Navigate to the URL
 data = {'IT': {'urls': ['https://example.com/job1', 'https://example.com/job2']}}
 
