@@ -66,5 +66,5 @@ def read_documents(client, db_name, collection_name, filter, limit=None):
 
 # MongoDB connection string
 mongo_uri = os.getenv('MONGO_URI')
-print(mongo_uri)
+print(f"URL : {mongo_uri}")
 
