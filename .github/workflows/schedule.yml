@@ -23,3 +23,7 @@ jobs:
 
     - name: Run script
       run: python scrape.py
+      env:
+        MONGO_URI: ${{ secrets.MONGO_URI }}
+        SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+        SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
