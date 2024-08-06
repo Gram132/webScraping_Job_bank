@@ -5,7 +5,8 @@ from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
 from pymongo import MongoClient
-
+import pymongo
+from pymongo.errors import ServerSelectionTimeoutError
 # General Variables
 smtp_server = "smtp.gmail.com"
 smtp_port = 465  # or 587 for STARTTLS
@@ -20,8 +21,14 @@ if not mongo_uri.startswith('mongodb://') and not mongo_uri.startswith('mongodb+
 # MongoDB connection
 def connect_to_mongo(uri):
     """Connect to MongoDB and return the client."""
-    client = MongoClient(uri)
-    return client
+    try:
+        client = MongoClient(uri, tls=True, tlsAllowInvalidCertificates=True)
+        client.admin.command('ping')  # Ping to test connection
+        return client
+    except ServerSelectionTimeoutError as err:
+        print(f"Server selection error: {err}")
+        raise
+
 
 def read_documents(client, db_name, collection_name, filter, limit=None):
     """Read documents from a specified MongoDB collection with optional limit."""
