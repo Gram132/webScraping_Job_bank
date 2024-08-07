@@ -39,6 +39,12 @@ def read_documents(client, db_name, collection_name, filter, limit=None):
     if limit:
         query = query.limit(limit)
     return list(query)
+
+def read_collection(client, db_name, collection_name):
+    db = client[db_name]
+    collection = db[collection_name]
+    return collection
+
 #Email sending df
 def send_email_with_attachment(sender_email, receiver_emails, subject, body, attachment_path, smtp_server, smtp_port, smtp_username, smtp_password):
     # Ensure receiver_emails is a list
@@ -50,6 +56,7 @@ def send_email_with_attachment(sender_email, receiver_emails, subject, body, att
     msg['From'] = sender_email
     msg['To'] = ", ".join(receiver_emails)
     msg['Subject'] = subject
+
 
     # Attach the body of the email
     msg.attach(MIMEText(body, 'plain'))
@@ -82,6 +89,7 @@ client = connect_to_mongo(mongo_uri)
 # Example usage: Read the first 60 documents
 filter = {'status': 'Not Sent'}
 documents = read_documents(client, 'jobs', 'jobsUrls', filter, limit=60)
+collection = read_collection(client, 'jobs', 'jobsUrls')
 
 # If there are no emails, notify by emailing me
 print(len(documents))
@@ -127,6 +135,7 @@ else:
         try:
             print(f"Sending ... ! ")
             send_email_with_attachment(sender_email, receiver_email, subject, body, attachment_path, smtp_server, smtp_port, smtp_username, smtp_password)
+            collection.update_one({'_id': d['_id']} , {'$set': {'status': 'Sent'}})
             # collection.delete_one({'_id': d['_id']})
         except Exception as e:
             print(f"Error: The email failed to send. {str(e)}")
