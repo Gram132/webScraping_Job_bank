@@ -100,42 +100,29 @@ else:
         sender_email = "abdellahgram01@gmail.com"
         receiver_email = "abdolahwidadi00@gmail.com"  # [d['Email']]
         subject = f"Application for {d['Email']} Position"
-        body = f"""Dear Hiring manager,
+        # Function to read file content
+        def read_file(file_path):
+            with open(file_path, 'r') as file:
+                return file.read()
+        # Read the email templates
+        body_IT_template = read_file('body_IT.txt')
+        body_remote_template = read_file('body_remote.txt')
+        MLIS_remote_template = read_file('MLIS_body.txt')
+        
+        # Format the email bodies with the job title and company name
+        body_IT = body_IT_template.format(Job_Title=d['Job_Title'])
+        body_remote = body_remote_template.format(Job_Title=d['Job_Title'])
+        MLIS_remote = MLIS_remote_template.format(Job_Title=d['Job_Title'])
 
-I am excited to apply for the {d['Job_Title']} position at your company. With a strong background in software development, a passion for coding, and a commitment to continuous learning, I am eager to contribute to your team and help drive the success of your projects.
+        if d['type'] == 'IT':
+            body =body_IT_template
+        if d['type'] == 'remote':
+            body =body_remote_template
+        if d['type'] == 'MLIS':
+            body =MLIS_remote_template
+        else :
+            break
 
-Background and Experience:
-
-I hold a bachelor's degree in Business Intelligence and Statistics and have gained extensive experience in software development through various projects and internships. My key skills include:
-
-Programming Languages: Proficient in Python, Java, JavaScript, and other programming languages.
-Web Development: Experienced in HTML, CSS, and JavaScript frameworks like React.js and Angular.
-Data Analysis: Skilled in SQL, NoSQL, and data visualization tools such as Tableau and Power BI.
-System Programming: Competent in system-level programming and optimizing performance in Linux environments.
-Problem-Solving: Strong analytical and problem-solving abilities, demonstrated through successful project completions and enhancements.
-Key Achievements:
-
-In my previous roles, I have consistently delivered high-quality solutions that meet user needs and business objectives. For example, I developed a real-time statistical application during my internship at the Chambre de Commerce, d'Industrie et de Services Agadir, which improved client satisfaction and reduced project delivery time.
-
-Why your company?
-
-I am particularly drawn to your company because of its innovative approach and commitment to excellence. The opportunity to work on challenging and impactful projects, collaborate with talented professionals, and contribute to your company’s mission is very appealing to me.
-
-Skills and Qualifications:
-
-Degree in Computer Science
-Proficiency in multiple programming languages and web technologies
-Experience with data analysis and visualization tools
-Strong problem-solving and analytical skills
-Excellent communication and teamwork abilities
-Attached is my resume for your review. I look forward to the opportunity to discuss how my skills and experiences align with the goals of your company. Thank you for considering my application.
-
-Best regards,
-
-Gram Abdellah
-+212 642 715 170
-abdellahgram01@gmail.com
-https://www.linkedin.com/in/abdegram0213/"""
         attachment_path = "Updated resume Data Entry Clerk.pdf"
         try:
             send_email_with_attachment(sender_email, receiver_email, subject, body, attachment_path, smtp_server, smtp_port, smtp_username, smtp_password)
