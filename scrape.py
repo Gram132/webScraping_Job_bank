@@ -117,7 +117,7 @@ else:
         
         if d['type'] == 'IT':
             body =body_IT
-            print(f"body : {body}")
+            
         if d['type'] == 'remote':
             body =body_remote
         if d['type'] == 'MLIS':
@@ -127,6 +127,7 @@ else:
 
         attachment_path = "Updated resume Data Entry Clerk.pdf"
         try:
+            print(f"Sending ... ! ")
             send_email_with_attachment(sender_email, receiver_email, subject, body, attachment_path, smtp_server, smtp_port, smtp_username, smtp_password)
             # collection.delete_one({'_id': d['_id']})
         except Exception as e:
