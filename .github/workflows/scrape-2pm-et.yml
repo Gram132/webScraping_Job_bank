@@ -2,7 +2,7 @@ name: Web Scraping - 2 PM
 
 on:
   schedule:
-    - cron: '26 20 * * *'  # 2:00 PM EST (19:00 UTC)
+    - cron: '50 19 * * *'  # 2:00 PM EST (19:00 UTC)
 
 jobs:
   scrape:
