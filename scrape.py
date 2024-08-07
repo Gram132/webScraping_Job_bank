@@ -98,8 +98,8 @@ else:
     for d in documents:
         # Send 60 emails at once
         sender_email = "abdellahgram01@gmail.com"
-        receiver_email = "abdolahwidadi00@gmail.com"  # [d['Email']]
-        subject = f"Application for {d['Email']} Position"
+        receiver_email = [d['Email']]
+        subject = f"Application for {d['Job_Title']} Position"
         # Function to read file content
         def read_file(file_path):
             with open(file_path, 'r') as file:
@@ -130,5 +130,3 @@ else:
             # collection.delete_one({'_id': d['_id']})
         except Exception as e:
             print(f"Error: The email failed to send. {str(e)}")
-        
-        break
