@@ -1,4 +1,4 @@
-name: Web Scraping
+name: Notify Me
 
 on:
   schedule:
