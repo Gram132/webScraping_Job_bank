@@ -116,12 +116,12 @@ else:
         
         
         if d['type'] == 'IT':
-            body =body_IT_template
+            body =body_IT
             print(f"body : {body}")
         if d['type'] == 'remote':
-            body =body_remote_template
+            body =body_remote
         if d['type'] == 'MLIS':
-            body =MLIS_remote_template
+            body =MLIS_remote
         else :
             break
 
