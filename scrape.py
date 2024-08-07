@@ -113,7 +113,8 @@ else:
         body_IT = body_IT_template.format(Job_Title=d['Job_Title'])
         body_remote = body_remote_template.format(Job_Title=d['Job_Title'])
         MLIS_remote = MLIS_remote_template.format(Job_Title=d['Job_Title'])
-
+        
+        print(f"type : {d['type']}")
         if d['type'] == 'IT':
             body =body_IT_template
         if d['type'] == 'remote':
