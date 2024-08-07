@@ -93,41 +93,12 @@ collection = read_collection(client, 'jobs', 'jobsUrls')
 
 # If there are no emails, notify by emailing me
 print(len(documents))
-
-if len(documents) == 60:
-    for d in documents:
-        # Send 60 emails at once
-        sender_email = "abdellahgram01@gmail.com"
-        receiver_email = [d['Email']]
-        subject = f"Application for {d['Job_Title']} Position"
-        # Function to read file content
-        def read_file(file_path):
-            with open(file_path, 'r') as file:
-                return file.read()
-        # Read the email templates
-        body_IT_template = read_file('body_IT.txt')
-        body_remote_template = read_file('body_remote.txt')
-        MLIS_remote_template = read_file('MLIS_body.txt')
-        
-        # Format the email bodies with the job title and company name
-        body_IT = body_IT_template.format(Job_Title=d['Job_Title'])
-        body_remote = body_remote_template.format(Job_Title=d['Job_Title'])
-        MLIS_remote = MLIS_remote_template.format(Job_Title=d['Job_Title'])
-        
-        
-        if d['type'] == 'IT':
-            body =body_IT
-            
-        if d['type'] == 'remote':
-            body =body_remote
-        if d['type'] == 'MLIS':
-            body =MLIS_remote
-
-        attachment_path = "Updated resume Data Entry Clerk.pdf"
-        try:
-            print(f"Sending ... ! ")
-            send_email_with_attachment(sender_email, receiver_email, subject, body, attachment_path, smtp_server, smtp_port, smtp_username, smtp_password)
-            collection.update_one({'_id': d['_id']} , {'$set': {'status': 'Sent'}})
-            # collection.delete_one({'_id': d['_id']})
-        except Exception as e:
-            print(f"Error: The email failed to send. {str(e)}")
+if len(documents) != 60:
+    sender_email = "abdellahgram01@gmail.com"
+    receiver_email = "abdolahwidadi00@gmail.com"
+    subject = "Reminder: Add Email to the Database"
+    body = "Dear ME,\n\nPlease add the following email address to the database as it is currently empty:\n\nRun the webscraping script in your notebook as soon as possible to not miss the upcoming opportunities.\n\nThank you\n\nAbdellah."
+    
+    # Send reminder
+    send_email_with_attachment(sender_email, receiver_email, subject, body, "emailNotFound.png",
+                               smtp_server, smtp_port, smtp_username, smtp_password)
