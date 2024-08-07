@@ -122,8 +122,6 @@ else:
             body =body_remote
         if d['type'] == 'MLIS':
             body =MLIS_remote
-        else :
-            break
 
         attachment_path = "Updated resume Data Entry Clerk.pdf"
         try:
