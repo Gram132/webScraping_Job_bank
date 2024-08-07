@@ -14,7 +14,8 @@ smtp_username = os.getenv('SMTP_USERNAME')
 smtp_password = os.getenv('SMTP_PASSWORD')
 
 # Verify the MongoDB URI
-mongo_uri = 'mongodb+srv://greatup:01JylO6DQesweO6V@cluster0.eke48zg.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+mongo_uri = 'mongodb+srv://greatup:01JylO6DQesweO6@<cluster-url>/test?retryWrites=true&w=majority'
+
 if not mongo_uri.startswith('mongodb://') and not mongo_uri.startswith('mongodb+srv://'):
     raise ValueError("Invalid MongoDB URI. It must start with 'mongodb://' or 'mongodb+srv://'")
 
