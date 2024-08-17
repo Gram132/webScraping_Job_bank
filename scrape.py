@@ -99,7 +99,7 @@ if len(documents) == 60:
         # Send 60 emails at once
         sender_email = "abdellahgram01@gmail.com"
         receiver_email = [d['Email']]
-        print(type(d['Job_Title']))
+        print(d)
         subject = f"Application for {d['Job_Title']} Position"
         # Function to read file content
         def read_file(file_path):
