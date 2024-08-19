@@ -34,7 +34,9 @@ def read_documents(client, db_name, collection_name, filter, limit=None):
     """Read documents from a specified MongoDB collection with optional limit."""
     db = client[db_name]
     collection = db[collection_name]
-    query = collection.find(filter)
+    query = collection.find(filter).sort([
+    ("type", 1)
+    ])
     
     if limit:
         query = query.limit(limit)
