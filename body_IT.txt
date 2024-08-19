@@ -1,15 +1,24 @@
 Dear Hiring Manager,
 
-I hope this message finds you well. I am excited to apply for the {Job_Title} position at your Company. With a background in data analysis and entry, supported by a Google Data Analytics Professional Certificate, I am eager to contribute my skills in SQL, Excel, Python, and data visualization to your team.
+I am reaching out from Agadir, Morocco regarding the {Job_Title} position at your company. As a recent graduate with a Google Data Analytics Professional Certificate and a Bachelor's in Business Intelligence and Statistics, I'm excited to offer my technical skills and data analysis expertise to your team.
 
-My experience as a Data Analyst Intern involved developing real-time applications, improving data handling processes, and enhancing data accuracy, which I believe aligns well with the requirements of the IT role at your Company. I am enthusiastic about leveraging my technical skills and problem-solving abilities in this position.
+Key qualifications:
+- Proficient in SQL, Python, R, Java, and C programming
+- Experience with data visualization tools including Tableau and Power BI
+- Strong background in web development (HTML/CSS, JavaScript,PHP, React.js, Django)
+- Multilingual: Fluent in Arabic, English, and French
 
-Please find my resume attached. I look forward to discussing how my background and skills can benefit your team.
+Relevant experience (Internship):
+- Developed a real-time statistical application as a Data Analyst Intern, improving client satisfaction by 30%
+- Reduced project delivery time by 20% through cross-functional data initiatives
+- Increased software reliability by 20% through comprehensive data testing and troubleshooting
 
-Thank you for considering my application.
+I am eager to contribute to your team, starting remotely with the possibility of relocation. I'm available for coding tests or technical interviews to demonstrate my abilities.
+
+Thank you for considering my application. I look forward to discussing how I can add value to your IT department.
 
 Best regards,
 Gram Abdellah
 +212 642 715 170
 abdellahgram01@gmail.com
-https://www.linkedin.com/in/abdegram0213/
+LinkedIn: linkedin.com/in/abdegram0213
