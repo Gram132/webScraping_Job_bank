@@ -89,7 +89,7 @@ print(len(documents))
 if len(documents) >= 4:
     for d in documents:
         sender_email = "abdellahgram01@gmail.com"
-        receiver_email = "abdolahwidadi00@gmail.com"#d['Email']
+        receiver_email = d['emails']
         subject = "Inquiry Regarding Erasmus Internship Application"
         
         # Function to read file content
