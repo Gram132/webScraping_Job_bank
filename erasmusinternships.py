@@ -113,7 +113,7 @@ if len(documents) >= 4:
         try:
             print(f"Sending ... ! ")
             send_email_with_attachment(sender_email, receiver_email, subject, body, attachment_path, smtp_server, smtp_port, smtp_username, smtp_password)
-            collection.update_one({'_id': d['_id']} , {'$set': {'isSent': 'Sent'}})
+            #collection.update_one({'_id': d['_id']} , {'$set': {'isSent': 'Sent'}})
             # collection.delete_one({'_id': d['_id']})
         except Exception as e:
             print(f"Error: The email failed to send. {str(e)}")
