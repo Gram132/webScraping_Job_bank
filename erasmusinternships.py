@@ -97,7 +97,7 @@ if len(documents) >= 4:
     for d in documents:
         # Send 60 emails at once
         sender_email = "abdellahgram01@gmail.com"
-        receiver_email = d['Email']
+        receiver_email = "abdolahwidadi00@gmail.com"#d['Email']
         print(d)
         subject = f"Inquiry Regarding Erasmus Internship Application"
         # Function to read file content
@@ -109,7 +109,7 @@ if len(documents) >= 4:
         body =body_intern_template.format(Job_Title=d['title'])
 
 
-        attachment_path = "Updated resume Data Entry Clerk.pdf"
+        attachment_path = ["Updated resume.pdf","South ToursCover Letter.pdf"]
         try:
             print(f"Sending ... ! ")
             send_email_with_attachment(sender_email, receiver_email, subject, body, attachment_path, smtp_server, smtp_port, smtp_username, smtp_password)
@@ -117,3 +117,4 @@ if len(documents) >= 4:
             # collection.delete_one({'_id': d['_id']})
         except Exception as e:
             print(f"Error: The email failed to send. {str(e)}")
+        break
