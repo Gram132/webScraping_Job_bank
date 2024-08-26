@@ -101,7 +101,7 @@ if len(documents) >= 4:
         body_intern_template = read_file('internships.txt')
         body = body_intern_template.format(Job_Title=d.get('title', ''))
 
-        attachment_paths = ["Updated resume.pdf", "South ToursCover Letter.pdf"]
+        attachment_paths = ["Updated resume.pdf", "Cover Letter.pdf"]
         try:
             print(f"Sending email to {receiver_email}...")
             send_email_with_attachments(sender_email, receiver_email, subject, body, attachment_paths, smtp_server, smtp_port, smtp_username, smtp_password)
