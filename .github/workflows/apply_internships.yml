@@ -1,7 +1,8 @@
 name: Erasmussinternships- Manual Trigger
 
 on:
-  workflow_dispatch:
+  schedule:
+    - cron: '0 9 * * *'  # Runs at 09:00 AM
 
 jobs:
   scrape:
