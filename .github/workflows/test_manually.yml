@@ -1,4 +1,4 @@
-name: Web Scraping - Manual Trigger
+name: Themeforest - Manual Trigger
 
 on:
   workflow_dispatch:
