@@ -110,10 +110,10 @@ def main():
                    'blogging','jamstack',
                    'courses','forums']
 
-  for cat in all_categories[:1]:
+  for cat in all_categories:
     categories = get_categories(f'https://themeforest.net/category/{cat}')
     categories = list(set(categories))
-    for category in categories[:2]:
+    for category in categories:
       if category == 'Blog / Magazine':
         category = 'blog-magazine'
       
