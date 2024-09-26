@@ -101,6 +101,7 @@ def scrape_themeforest(url , category , all_cat):
     return items
 
 def main():
+  print('Lets Go')
   all_items = []
   all_categories =['site-templates','wordpress',
                    'ui-templates','template-kits',
@@ -164,8 +165,9 @@ if __name__ == '__main__':
         
         if existing_document:
             item = item +1
-            print(f"Document inserted with _id: {result.inserted_id} : {item}/{len(theme_data)}")
+            print(f"Document Number:: {item}/{len(theme_data)}")
         else:
            # Insert the document if it doesn't exist
             result = collection.insert_one(template)
+            print(f"Document inserted with _id: {result.inserted_id}")
 
