@@ -62,17 +62,42 @@ def scrape_themeforest(url , category , all_cat):
 
     for item in soup.find_all('div', class_='shared-item_cards-card_component__root'):
       if item is not None:
-        name = item.find('h3').text.strip()
-        author =item.find('a', class_='shared-item_cards-author_category_component__link').text.strip()
-        price =item.find('div', class_='shared-item_cards-price_component__root').text.strip()
+
+        name = item.find('h3')
+        if name is not None:
+          name = name.text.strip()
+        else:
+          name = 'No name'
+        
+        author =item.find('a', class_='shared-item_cards-author_category_component__link')
+        if author is not None:
+          author = author.text.strip()
+        else:
+          author = 'No author'
+
+        price =item.find('div', class_='shared-item_cards-price_component__root')
+        if price is not None:
+          price = price.text.strip()
+        else:
+          price = 'No price'
+
         rating = item.find('div' , class_='shared-stars_rating_component__starRating')
         if rating is not None:
           rating = rating.get('aria-label')
         else:
           rating = 'No rating'
 
-        sales =item.find('div', class_='shared-item_cards-sales_component__root').text.strip()
-        last_update =item.find('div', class_='shared-item_cards-list-image_card_component__lastUpdated shared-item_cards-list-image_card_component__tinyText').text.strip()
+        sales =item.find('div', class_='shared-item_cards-sales_component__root')
+        if sales is not None:
+           sales = sales.text.strip()
+        else:
+           sales = 'No sales'
+
+        last_update =item.find('div', class_='shared-item_cards-list-image_card_component__lastUpdated shared-item_cards-list-image_card_component__tinyText')
+        if last_update is not None:
+           last_update = last_update.text.strip()
+        else:
+           last_update = 'No last update'
       
         ul_element = item.find('ul', class_='shared-item_cards-key_features_component__root')
         # Find all li elements within the ul
