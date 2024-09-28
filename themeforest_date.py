@@ -110,7 +110,10 @@ def scrape_themeforest(url , category , all_cat):
         
         #Extract URl
         link_tag = soup.find('a', class_='shared-item_cards-list-image_card_component__itemLinkOverlay')
-        url = link_tag['href'] if link_tag is not None else url = 'No rating'
+        if link_tag is not None:
+           url = link_tag['href']
+        else:
+           url = 'No url'
         #Extract Date Created
         response = requests.get(url)
         soup = BeautifulSoup(response.content, 'html.parser')        
