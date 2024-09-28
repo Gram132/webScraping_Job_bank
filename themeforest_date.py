@@ -185,7 +185,7 @@ if __name__ == '__main__':
     client = connect_to_mongo(mongo_uri)
     # Choose your database and collection
     db = client['themeforest']
-    collection = db['themes']
+    collection = db['themes_date']
 
     all_categories =['site-templates','wordpress',
                    'ui-templates','template-kits',
