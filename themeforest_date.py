@@ -107,7 +107,18 @@ def scrape_themeforest(url , category , all_cat):
           li_elements = ul_element.find_all('li')
           # Extract and print the text of each li
           features = [li.text.strip() for li in li_elements]
-
+        
+        #Extract URl
+        link_tag = soup.find('a', class_='shared-item_cards-list-image_card_component__itemLinkOverlay')
+        url = link_tag['href'] if url else rating = 'No rating'
+        #Extract Date Created
+        response = requests.get(url)
+        soup = BeautifulSoup(response.content, 'html.parser')        
+        elements = soup.find_all(class_='meta-attributes__attr-detail')
+        if len(elements) >= 2:
+            published	 = elements[1].get_text(strip=True)  
+        else:
+            published	= 'No published	date'
 
         items.append({
             'name': name,
@@ -118,7 +129,9 @@ def scrape_themeforest(url , category , all_cat):
             'rating': rating,
             'price': price,
             'last_update': last_update,
-            'tags': ', '.join(features)
+            'published':published,
+            'tags': ', '.join(features),
+            'url':url
         })
       else:
         print("Element not found")
@@ -132,7 +145,7 @@ def main(all_categories):
   for cat in [all_categories]:
     categories = get_categories(f'https://themeforest.net/category/{cat}')
     categories = list(set(categories))
-    for category in categories:
+    for category in categories[:2]:
       if category == 'Blog / Magazine':
         category = 'blog-magazine'
       
@@ -164,7 +177,7 @@ def main(all_categories):
 # Save to CSV
 def save_to_csv(all_items):
   with open('themeforest_data.csv', 'w', newline='', encoding='utf-8') as file:
-    writer = csv.DictWriter(file, fieldnames=['name', 'author', 'category','sub_category', 'sales', 'rating', 'price', 'last_update', 'tags'])
+    writer = csv.DictWriter(file, fieldnames=['name', 'author', 'category','sub_category', 'sales', 'rating', 'price', 'last_update','published', 'tags','url'])
     writer.writeheader()
     writer.writerows(all_items)
 
@@ -180,7 +193,7 @@ if __name__ == '__main__':
                    'cms-themes','muse-templates',
                    'blogging','jamstack',
                    'courses','forums']
-    for cat in all_categories :
+    for cat in all_categories[:2] :
        theme_data= main(cat)
        
        item =0
