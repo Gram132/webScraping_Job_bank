@@ -109,17 +109,20 @@ def scrape_themeforest(url , category , all_cat):
           features = [li.text.strip() for li in li_elements]
         
         #Extract URl
-        link_tag = soup.find('a', class_='shared-item_cards-list-image_card_component__itemLinkOverlay')
+        link_tag = item.find('a', class_='shared-item_cards-list-image_card_component__itemLinkOverlay')
         if link_tag is not None:
            url = link_tag['href']
         else:
            url = 'No url'
         #Extract Date Created
-        response = requests.get(url)
-        soup = BeautifulSoup(response.content, 'html.parser')        
-        elements = soup.find_all(class_='meta-attributes__attr-detail')
-        if len(elements) >= 2:
-            published	 = elements[1].get_text(strip=True)  
+        if url != 'No url':
+           response = requests.get(url)
+           soup = BeautifulSoup(response.content, 'html.parser')        
+           elements = soup.find_all(class_='meta-attributes__attr-detail')
+           if len(elements) >= 2:
+              published	 = elements[1].get_text(strip=True)  
+           else:
+              published	= 'No published	date'
         else:
             published	= 'No published	date'
 
