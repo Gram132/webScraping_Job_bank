@@ -151,7 +151,7 @@ def main(all_categories):
   for cat in [all_categories]:
     categories = get_categories(f'https://themeforest.net/category/{cat}')
     categories = list(set(categories))
-    for category in categories[:2]:
+    for category in categories:
       if category == 'Blog / Magazine':
         category = 'blog-magazine'
       
@@ -199,7 +199,7 @@ if __name__ == '__main__':
                    'cms-themes','muse-templates',
                    'blogging','jamstack',
                    'courses','forums']
-    for cat in all_categories[:2] :
+    for cat in all_categories:
        theme_data= main(cat)
        
        item =0
