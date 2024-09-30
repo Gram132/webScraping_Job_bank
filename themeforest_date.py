@@ -146,7 +146,7 @@ def scrape_themeforest(url , category , all_cat):
 
 def main(all_categories):
   #print('Lets Go')
-  #all_items = []
+  all_items = []
 
   #for cat in [all_categories]:
   #  categories = get_categories(f'https://themeforest.net/category/{cat}')
