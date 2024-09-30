@@ -1,8 +1,7 @@
 name: Themeforest - Manual Trigger
 
 on:
-  schedule:
-    - cron: '45 16 * * *'  #  (17:30 UTC)
+  workflow_dispatch:
 
 
 jobs:
