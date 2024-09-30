@@ -145,39 +145,39 @@ def scrape_themeforest(url , category , all_cat):
     return items
 
 def main(all_categories):
-  print('Lets Go')
-  all_items = []
+  #print('Lets Go')
+  #all_items = []
 
-  for cat in [all_categories]:
-    categories = get_categories(f'https://themeforest.net/category/{cat}')
-    categories = list(set(categories))
-    for category in categories:
-      if category == 'Blog / Magazine':
-        category = 'blog-magazine'
-      
-      category = category.replace(" ", "-").lower()
-      print(f'{cat} : {category}')
+  #for cat in [all_categories]:
+  #  categories = get_categories(f'https://themeforest.net/category/{cat}')
+  #  categories = list(set(categories))
+  #  for category in categories:
+  #    if category == 'Blog / Magazine':
+  #      category = 'blog-magazine'
+  #    
+  #    category = category.replace(" ", "-").lower()
+  #    print(f'{cat} : {category}')
 
-      carts_len = product_carts_len(f'https://themeforest.net/category/{cat}/{category}?sort=sales')
+  #    carts_len = product_carts_len(f'https://themeforest.net/category/{cat}/{category}?sort=sales')
 
-      for page in range(1, int(carts_len)): 
-        url = f'https://themeforest.net/category/{cat}/{category}?page={page}&sort=sales#content'
-        items = scrape_themeforest(url ,category , cat)
-        all_items.extend(items)
-        sleep(random.uniform(1, 3))  
+  #    for page in range(1, int(carts_len)): 
+  #      url = f'https://themeforest.net/category/{cat}/{category}?page={page}&sort=sales#content'
+  #      items = scrape_themeforest(url ,category , cat)
+  #      all_items.extend(items)
+  #      sleep(random.uniform(1, 3))  
 
-  #all_categories2 =['jamstack',
-  #                 'courses',
-  #                 'forums']
-  #for cat in all_categories2 :
-  #  carts_len = product_carts_len(f'https://themeforest.net/category/{cat}')
-  #  category = cat
-  #  print(f'{cat} : {category}')
-  #  for page in range(1, int(carts_len)): 
-  #    url = f'https://themeforest.net/category/{cat}?page={page}#content'
-  #    items = scrape_themeforest(url ,category , cat)
-  #    all_items.extend(items)
-  #    sleep(random.uniform(1, 3)) 
+  all_categories2 =['jamstack',
+                   'courses',
+                   'forums']
+  for cat in all_categories2 :
+    carts_len = product_carts_len(f'https://themeforest.net/category/{cat}')
+    category = cat
+    print(f'{cat} : {category}')
+    for page in range(1, int(carts_len)): 
+      url = f'https://themeforest.net/category/{cat}?page={page}#content'
+      items = scrape_themeforest(url ,category , cat)
+      all_items.extend(items)
+      sleep(random.uniform(1, 3)) 
   return all_items
   
 # Save to CSV
