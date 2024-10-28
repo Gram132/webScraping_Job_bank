@@ -38,7 +38,7 @@ class BraintrustPromoBot:
 
         
         # Your Braintrust referral link
-        self.referral_link = os.getenv('https://app.usebraintrust.com/r/abdellah29/')
+        self.referral_link = os.getenv('REFERRAL_LINK')
         
         # Expanded list of target subreddits with categories
         self.target_subreddits = {
@@ -94,7 +94,7 @@ Key Advantages:
 • Enterprise-level projects
 • Long-term contracts available
 
-For junior and senior developers, architects, and tech leads interested in joining: {self.referral_link}
+For junior and senior developers, architects, and tech leads interested in joining: {referral_link}
 
 Feel free to ask any questions about the platform or my experience!"""
             },
@@ -118,7 +118,7 @@ Platform Benefits:
 • Earn ownership (BTRST tokens)
 • Professional community
 
-Ready to upgrade your freelance game? Join here: {self.referral_link}
+Ready to upgrade your freelance game? Join here: {referral_link}
 
 Would love to connect with other designers on the platform!"""
             },
@@ -149,7 +149,7 @@ Current opportunities in:
 ✅ DevOps
 ✅ Technical Writing
 
-Join using my referral link: {self.referral_link}
+Join using my referral link: {referral_link}
 
 Let me know if you have any questions about getting started!"""
             }
