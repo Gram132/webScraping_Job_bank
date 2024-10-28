@@ -258,9 +258,9 @@ Let me know if you have any questions about getting started!"""
         
         while True:
             # Post in each subreddit category
-            for category, subreddits in self.target_subreddits.items():
+            '''for category, subreddits in self.target_subreddits.items():
                 for subreddit in subreddits:
-                    self.create_post(subreddit)
+                    self.create_post(subreddit)'''
             
             # Monitor for keywords and respond to relevant comments
             self.monitor_keywords()
